@@ -5,19 +5,19 @@ defmodule Geo.Mixfile do
     [
       app: :geo,
       version: "3.0.0",
-      elixir: "~> 1.6",
+      elixir: "~> 1.7",
       deps: deps(),
       description: description(),
       package: package(),
       name: "Geo",
-      source_url: "https://github.com/bryanjos/geo",
-      test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test
-      ]
+      source_url: "https://github.com/taun/geo",
+      # test_coverage: [tool: ExCoveralls],
+      # preferred_cli_env: [
+      #   coveralls: :test,
+      #   "coveralls.detail": :test,
+      #   "coveralls.post": :test,
+      #   "coveralls.html": :test
+      # ]
     ]
   end
 
@@ -36,9 +36,9 @@ defmodule Geo.Mixfile do
 
   defp deps do
     [
-      {:poison, "~> 4.0", only: :test},
-      {:ex_doc, "~> 0.18", only: :dev},
-      {:excoveralls, "~> 0.10.2", only: :test}
+      {:jason, "~> 1.1", only: :test},
+      {:ex_doc, "~> 0.19.2", only: :dev},
+      {:excoveralls, "~> 0.10.3", only: :test}
     ]
   end
 

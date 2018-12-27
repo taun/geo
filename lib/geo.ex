@@ -16,13 +16,13 @@ defmodule Geo do
   * Encode and decode WKT and EWKT
 
     ```elixir
-    iex(1)> point = Geo.WKT.decode("POINT(30 -90)")
+    iex(1)> point = Geo.WKT.decode!("POINT(30 -90)")
     %Geo.Point{ coordinates: {30, -90}, srid: nil}
 
     iex(2)> Geo.WKT.encode(point)
     "POINT(30 -90)"
 
-    iex(3)> point = Geo.WKT.decode("SRID=4326;POINT(30 -90)")
+    iex(3)> point = Geo.WKT.decode!("SRID=4326;POINT(30 -90)")
     %Geo.Point{coordinates: {30, -90}, srid: 4326}
     ```
 
@@ -49,15 +49,15 @@ defmodule Geo do
     be done before and after.
 
     ```elixir
-    #Examples using Poison as the JSON parser
+    #Examples using Jason as the JSON parser
 
     iex(1)> Geo.JSON.encode(point)
     %{ "type" => "Point", "coordinates" => [100.0, 0.0] }
 
-    iex(2)> point = Poison.decode!("{ \"type\": \"Point\", \"coordinates\": [100.0, 0.0] }") |> Geo.JSON.decode
+    iex(2)> point = Jason.decode!("{ \"type\": \"Point\", \"coordinates\": [100.0, 0.0] }") |> Geo.JSON.decode
     %Geo.Point{ coordinates: {100.0, 0.0}, srid: nil }
 
-    iex(3)> Geo.JSON.encode(point) |> Poison.encode!
+    iex(3)> Geo.JSON.encode(point) |> Jason.encode!
     "{\"type\":\"Point\",\"coordinates\":[100.0,0.0]}"
     ```
   """
